@@ -24,6 +24,5 @@ function cache_to_array($path) {
     return $matrixData;
 }
 
-$matrixData = cache_to_array('template_bits_attendance.xlsx');
-echo count($matrixData)." sheets were found. Parsing all sheets.";
+
 

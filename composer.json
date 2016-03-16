@@ -1,5 +1,6 @@
 {
     "require": {
-        "nuovo/spreadsheet-reader": "^0.5.11"
+        "nuovo/spreadsheet-reader": "^0.5.11",
+        "google/apiclient": "^1.1"
     }
 }
