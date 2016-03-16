@@ -48,7 +48,7 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_list` (`bits_id`, `full_name`, `ins
             var timeRemain = $('#time_remain');
 
             var updateProgress = function (x, y) {
-                x = Math.floor(x);
+                x = Math.ceil(x);
                 y = Math.floor(y);
                 var minute = Math.floor(y / 60),
                         second = y - 60 * minute;
