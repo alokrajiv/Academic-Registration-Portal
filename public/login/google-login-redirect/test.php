@@ -73,4 +73,5 @@ $client->setClientSecret($client_secret);
 $client->setRedirectUri($redirect_uri);
 $client->addScope("email");
 
+$service = new Google_Service_Oauth2($client);
 echo 'Hello';
