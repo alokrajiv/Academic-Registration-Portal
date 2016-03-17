@@ -91,5 +91,24 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 } else {
   $authUrl = $client->createAuthUrl();
 }
-
+//Display user info or display login url as per the info we have.
+echo '<div style="margin:20px">';
+if (isset($authUrl)){ 
+	//show login url
+	echo '<div align="center">';
+	echo '<h3>Login with Google -- Demo</h3>';
+	echo '<div>Please click login button to connect to Google.</div>';
+	echo '<a class="login" href="' . $authUrl . '"><img src="signin_button.png" /></a>';
+	echo '</div>';
+	
+} else {
+	
+	$user = $service->userinfo->get(); //get user info 
+	
+	//print user details
+	echo '<pre>';
+	print_r($user);
+	echo '</pre>';
+}
+echo '</div>';
 echo 'Hello';
