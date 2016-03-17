@@ -56,7 +56,6 @@ class Customizable_Exception extends Exception {
     }
 }
 require_once $_SERVER["DOCUMENT_ROOT"].'/../vendor/google/apiclient/src/Google/autoload.php';
-echo 'Hello';
 
 //Insert your cient ID and secret 
 //You can get it from : https://console.developers.google.com/
@@ -68,3 +67,6 @@ $redirect_uri = 'http://bpdc-arcd.azurewebsites.net/login/google-login-redirect/
 if (isset($_GET['logout'])) {
   unset($_SESSION['access_token']);
 }
+
+
+echo 'Hello';
