@@ -9,7 +9,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/../configs/debugger.php';
 //You can get it from : https://console.developers.google.com/
 $client_id = '543618368896-pdttlgf1v8caca51dp017npqu1qgcei4.apps.googleusercontent.com'; 
 $client_secret = 'lLkfNni6luZREbSfwx8PBbm_';
-$redirect_uri = 'http://bpdc-arcd.azurewebsites.net/login/google-login-redirect/';
+$redirect_uri = getenv("CUSTOMCONNSTR_BASE_URL").'/login/google-login-redirect/';
 
 //incase of logout request, just unset the session var
 if (isset($_GET['logout'])) {
