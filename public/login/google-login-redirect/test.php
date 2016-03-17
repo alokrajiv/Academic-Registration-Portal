@@ -2,58 +2,60 @@
 session_start(); //session start
 
 
-error_reporting(-1);
-assert_options(ASSERT_ACTIVE, 1);
-assert_options(ASSERT_WARNING, 0);
-assert_options(ASSERT_BAIL, 0);
-assert_options(ASSERT_QUIET_EVAL, 0);
-assert_options(ASSERT_CALLBACK, 'assert_callcack');
-set_error_handler('error_handler');
-set_exception_handler('exception_handler');
-register_shutdown_function('shutdown_handler');
-
-function assert_callcack($file, $line, $message) {
-    throw new Customizable_Exception($message, null, $file, $line);
-}
-
-function error_handler($errno, $error, $file, $line, $vars) {
-    if ($errno === 0 || ($errno & error_reporting()) === 0) {
-        return;
-    }
-
-    throw new Customizable_Exception($error, $errno, $file, $line);
-}
-
-function exception_handler(Exception $e) {
-    // Do what ever!
-    echo '<pre>', print_r($e, true), '</pre>';
-    exit;
-}
-
-function shutdown_handler() {
-    try {
-        if (null !== $error = error_get_last()) {
-            throw new Customizable_Exception($error['message'], $error['type'], $error['file'], $error['line']);
-        }
-    } catch (Exception $e) {
-        exception_handler($e);
-    }
-}
-
-class Customizable_Exception extends Exception {
-    public function __construct($message = null, $code = null, $file = null, $line = null) {
-        if ($code === null) {
-            parent::__construct($message);
-        } else {
-            parent::__construct($message, $code);
-        }
-        if ($file !== null) {
-            $this->file = $file;
-        }
-        if ($line !== null) {
-            $this->line = $line;
-        }
-    }
-}
 require_once $_SERVER["DOCUMENT_ROOT"].'/../vendor/google/apiclient/src/Google/autoload.php';
+
+//Insert your cient ID and secret 
+//You can get it from : https://console.developers.google.com/
+$client_id = '543618368896-pdttlgf1v8caca51dp017npqu1qgcei4.apps.googleusercontent.com'; 
+$client_secret = 'lLkfNni6luZREbSfwx8PBbm_';
+$redirect_uri = 'http://bpdc-arcd.azurewebsites.net/login/google-login-redirect/';
+
+//incase of logout request, just unset the session var
+if (isset($_GET['logout'])) {
+  unset($_SESSION['access_token']);
+}
+$client = new Google_Client();
+$client->setClientId($client_id);
+$client->setClientSecret($client_secret);
+$client->setRedirectUri($redirect_uri);
+$client->addScope("email");
+
+$service = new Google_Service_Oauth2($client);
+
+if (isset($_GET['code'])) {
+  $client->authenticate($_GET['code']);
+  $_SESSION['access_token'] = $client->getAccessToken();
+  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+  exit;
+}
+
+/************************************************
+  If we have an access token, we can make
+  requests, else we generate an authentication URL.
+ ************************************************/
+if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+  $client->setAccessToken($_SESSION['access_token']);
+} else {
+  $authUrl = $client->createAuthUrl();
+}
+//Display user info or display login url as per the info we have.
+echo '<div style="margin:20px">';
+if (isset($authUrl)){ 
+	//show login url
+	echo '<div align="center">';
+	echo '<h3>Login with Google -- Demo</h3>';
+	echo '<div>Please click login button to connect to Google.</div>';
+	echo '<a class="login" href="' . $authUrl . '"><img src="signin_button.png" /></a>';
+	echo '</div>';
+	
+} else {
+	
+	$user = $service->userinfo->get(); //get user info 
+	
+	//print user details
+	echo '<pre>';
+	print_r($user);
+	echo '</pre>';
+}
+echo '</div>';
 echo 'Hello';
