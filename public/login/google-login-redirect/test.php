@@ -56,3 +56,4 @@ class Customizable_Exception extends Exception {
     }
 }
 require_once $_SERVER["DOCUMENT_ROOT"].'/../vendor/google/apiclient/src/Google/autoload.php';
+echo 'Hello';
