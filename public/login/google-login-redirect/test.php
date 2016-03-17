@@ -74,4 +74,22 @@ $client->setRedirectUri($redirect_uri);
 $client->addScope("email");
 
 $service = new Google_Service_Oauth2($client);
+
+if (isset($_GET['code'])) {
+  $client->authenticate($_GET['code']);
+  $_SESSION['access_token'] = $client->getAccessToken();
+  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+  exit;
+}
+
+/************************************************
+  If we have an access token, we can make
+  requests, else we generate an authentication URL.
+ ************************************************/
+if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+  $client->setAccessToken($_SESSION['access_token']);
+} else {
+  $authUrl = $client->createAuthUrl();
+}
+
 echo 'Hello';
