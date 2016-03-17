@@ -67,6 +67,10 @@ $redirect_uri = 'http://bpdc-arcd.azurewebsites.net/login/google-login-redirect/
 if (isset($_GET['logout'])) {
   unset($_SESSION['access_token']);
 }
-
+$client = new Google_Client();
+$client->setClientId($client_id);
+$client->setClientSecret($client_secret);
+$client->setRedirectUri($redirect_uri);
+$client->addScope("email");
 
 echo 'Hello';
