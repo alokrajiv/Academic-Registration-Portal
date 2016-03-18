@@ -6,8 +6,8 @@ $target_file = getenv("BASE_DIR") . "/uploads/" . $_GET['filename'];
 //$_SESSION['filePathForStudentList'] = $target_file;
 //header("Location: sheet_to_db.php");
 
-$sql1 = "DROP TABLE IF EXISTS `bpdc-arcd-db`.`student_list`;"
-        . "CREATE TABLE `bpdc-arcd-db`.`student_list` ( `bits_id` VARCHAR(20) NOT NULL , "
+$sql1 = "DROP TABLE IF EXISTS `bpdc-arcd-db`.`faculty_list`;"
+        . "CREATE TABLE `bpdc-arcd-db`.`faculty_list` ( `psrn_no` VARCHAR(20) NOT NULL , "
         . "`full_name` VARCHAR(60) NOT NULL , `institute_email` VARCHAR(60) NOT NULL , "
         . "`personal_email` VARCHAR(60) NOT NULL , UNIQUE `institute_email` (`institute_email`), "
         . "UNIQUE `personal_email` (`personal_email`)) ENGINE = InnoDB;";
@@ -18,7 +18,7 @@ try {
     
 }
 
-$sql2 = "INSERT INTO `bpdc-arcd-db`.`student_list` (`bits_id`, `full_name`, `institute_email`, `personal_email`) VALUES (?, ?, ?, ?)";
+$sql2 = "INSERT INTO `bpdc-arcd-db`.`faculty_list` (`psrn_no`, `full_name`, `institute_email`, `personal_email`) VALUES (?, ?, ?, ?)";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +65,7 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_list` (`bits_id`, `full_name`, `ins
             $dbConn->beginTransaction();
 
             $Reader = new SpreadsheetReader($target_file);
-            $cnt = -1;
+            $cnt = 0;
             while ($Reader->valid()) {
                 $Reader->next();
                 $cnt++;

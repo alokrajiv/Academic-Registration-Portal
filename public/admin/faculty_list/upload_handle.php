@@ -1,6 +1,7 @@
 <?php
 
-require_once $_SERVER["DOCUMENT_ROOT"].'/../configs/auto_config.php';
+session_start();
+require_once $_SERVER["DOCUMENT_ROOT"] . '/../configs/auto_config.php';
 $target_dir = getenv("BASE_DIR") . "/uploads/";
 $sheetFileType = pathinfo($_FILES["xlsx_file"]["name"], PATHINFO_EXTENSION);
 $target_file = $target_dir . uniqid() . '.' . $sheetFileType;
@@ -29,13 +30,18 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["xlsx_file"]["tmp_name"], $target_file)) {
         echo "The file " . basename($_FILES["xlsx_file"]["name"]) . " has been uploaded.";
-        require_once getenv("BASE_DIR")."/tools/parser.php";
-        $matrixData = cache_to_array($target_file);
-        echo count($matrixData) . " sheets were found. Parsing all sheets.";
+
+        $Reader = new SpreadsheetReader($target_file);
+        $sheets = $Reader->Sheets();
+        echo "<br>" . count($sheets) . " sheets founds. The first will be taken automatically.";
+        echo "<br>The entire faculty table is going to be flushed and loaded with this data.";
+        
+        echo '<a href="sheet_to_db.php?filename=' . basename($target_file) . '">CONFIRM</a>';
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+
 
 function uniqid_base36($more_entropy = true) {
     $s = uniqid('', $more_entropy);
