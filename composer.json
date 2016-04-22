@@ -1,6 +1,7 @@
 {
     "require": {
-        "nuovo/spreadsheet-reader": "^0.5.11",
-        "google/apiclient": "^1.1"
+        "google/apiclient": "^1.1",
+        "phpoffice/phpexcel": "^1.8",
+        "akeneo-labs/spreadsheet-parser": "^1.2"
     }
 }

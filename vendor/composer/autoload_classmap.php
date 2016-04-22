@@ -3568,11 +3568,4 @@ return array(
     'Google_Utils_URITemplate' => $vendorDir . '/google/apiclient/src/Google/Utils/URITemplate.php',
     'Google_Verifier_Abstract' => $vendorDir . '/google/apiclient/src/Google/Verifier/Abstract.php',
     'Google_Verifier_Pem' => $vendorDir . '/google/apiclient/src/Google/Verifier/Pem.php',
-    'OLERead' => $vendorDir . '/nuovo/spreadsheet-reader/php-excel-reader/excel_reader2.php',
-    'SpreadsheetReader' => $vendorDir . '/nuovo/spreadsheet-reader/SpreadsheetReader.php',
-    'SpreadsheetReader_CSV' => $vendorDir . '/nuovo/spreadsheet-reader/SpreadsheetReader_CSV.php',
-    'SpreadsheetReader_ODS' => $vendorDir . '/nuovo/spreadsheet-reader/SpreadsheetReader_ODS.php',
-    'SpreadsheetReader_XLS' => $vendorDir . '/nuovo/spreadsheet-reader/SpreadsheetReader_XLS.php',
-    'SpreadsheetReader_XLSX' => $vendorDir . '/nuovo/spreadsheet-reader/SpreadsheetReader_XLSX.php',
-    'Spreadsheet_Excel_Reader' => $vendorDir . '/nuovo/spreadsheet-reader/php-excel-reader/excel_reader2.php',
 );

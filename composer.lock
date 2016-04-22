@@ -4,9 +4,73 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b39e63b8651bcb216ae4111943dab159",
-    "content-hash": "74e7eb8180640a1de3cef2a4e758ddbe",
+    "hash": "ff6e26cf4f0727d279139f0470d8a154",
+    "content-hash": "3dfb76c8ce11280fd3c7b817e229e5d3",
     "packages": [
+        {
+            "name": "akeneo-labs/spreadsheet-parser",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/akeneo-labs/spreadsheet-parser.git",
+                "reference": "dfdaa804203914c5ec4c24da7641a56cb9c514df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/akeneo-labs/spreadsheet-parser/zipball/dfdaa804203914c5ec4c24da7641a56cb9c514df",
+                "reference": "dfdaa804203914c5ec4c24da7641a56cb9c514df",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "symfony/options-resolver": "~2.6 || ~3.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Akeneo\\Component\\SpreadsheetParser\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Antoine Guigan",
+                    "email": "antoine@akeneo.com",
+                    "homepage": "http://akeneo.com"
+                },
+                {
+                    "name": "Matthieu Viel",
+                    "email": "matthieu.viel@akeneo.com",
+                    "homepage": "http://akeneo.com"
+                },
+                {
+                    "name": "JM Leroux",
+                    "email": "jean-marie.leroux@akeneo.com"
+                }
+            ],
+            "description": "Akeneo Spreadsheet parser. Reads XLXS files from Microsoft Excel and Open Office",
+            "homepage": "http://akeneo.com",
+            "keywords": [
+                "akeneo",
+                "excel",
+                "parser",
+                "reader",
+                "spreadsheet",
+                "xlsx"
+            ],
+            "time": "2016-03-25 12:51:06"
+        },
         {
             "name": "google/apiclient",
             "version": "1.1.7",
@@ -51,27 +115,91 @@
             "time": "2016-02-02 18:50:42"
         },
         {
-            "name": "nuovo/spreadsheet-reader",
-            "version": "0.5.11",
+            "name": "phpoffice/phpexcel",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nuovo/spreadsheet-reader.git",
-                "reference": "f6bd49d101042eaa71b0fbd82e7a57e5a276dc3d"
+                "url": "https://github.com/PHPOffice/PHPExcel.git",
+                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nuovo/spreadsheet-reader/zipball/f6bd49d101042eaa71b0fbd82e7a57e5a276dc3d",
-                "reference": "f6bd49d101042eaa71b0fbd82e7a57e5a276dc3d",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
                 "shasum": ""
             },
             "require": {
-                "ext-zip": "*",
-                "php": ">= 5.3.0"
+                "ext-xml": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.2.0"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "./"
+                "psr-0": {
+                    "PHPExcel": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                }
+            ],
+            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "http://phpexcel.codeplex.com",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2015-05-01 07:00:55"
+        },
+        {
+            "name": "symfony/options-resolver",
+            "version": "v3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/options-resolver.git",
+                "reference": "9a05ccd013e9089c3503d740503fb9357c8c341c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/9a05ccd013e9089c3503d740503fb9357c8c341c",
+                "reference": "9a05ccd013e9089c3503d740503fb9357c8c341c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\OptionsResolver\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -80,23 +208,22 @@
             ],
             "authors": [
                 {
-                    "name": "Martins Pilsetnieks",
-                    "email": "pilsetnieks@gmail.com",
-                    "homepage": "http://www.nuovo.lv/"
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Spreadsheet reader library for Excel, OpenOffice and structured text files",
-            "homepage": "https://github.com/nuovo/spreadsheet-reader",
+            "description": "Symfony OptionsResolver Component",
+            "homepage": "https://symfony.com",
             "keywords": [
-                "OpenOffice",
-                "csv",
-                "excel",
-                "ods",
-                "spreadsheet",
-                "xls",
-                "xlsx"
+                "config",
+                "configuration",
+                "options"
             ],
-            "time": "2015-04-30 00:00:00"
+            "time": "2016-03-04 07:55:57"
         }
     ],
     "packages-dev": [],
