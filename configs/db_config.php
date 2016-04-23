@@ -18,3 +18,5 @@ function setup_db($sqlFilePath){
         die();
     }
 }
+$stmt = $dbConn->prepare("USE `bpdc-arcd-db`;");
+$stmt->execute();
