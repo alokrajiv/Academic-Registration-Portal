@@ -1,11 +1,5 @@
 <?php
-if (session_status() == PHP_SESSION_ACTIVE) {
-    session_destroy();
-}
 session_start();
-require_once $_SERVER["DOCUMENT_ROOT"] . '/../tools/auth_manager.php';
-$auth_manager = new auth_manager();
-$auth_manager->set_session("santhoshkumar@dubai.bits-pilani.ac.in");
 ?>
 <!DOCTYPE html>
 <!--
@@ -21,6 +15,7 @@ and open the template in the editor.
     <body>
         <a href="attendance/">UPLOAD ATTENDANCE</a>
         Logged in as <?=$_SESSION['user_data']['full_name']?>
+        <a href="/login/logout.php">LOGOUT</a>
         <?php
         ?>
     </body>

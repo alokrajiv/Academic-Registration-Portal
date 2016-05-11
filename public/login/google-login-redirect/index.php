@@ -96,12 +96,25 @@ if (!isset($_SESSION['user_data'])) {
             var_dump($_SESSION['user_data']);
             //remeber session is not reset here. Only user_data is set 
             echo '<br><a href="../logout.php">LOGOUT</a>';
+            go_to_home();
         }
     }
     echo '</div>';
 } else {
     echo 'Already signed into portal. ';
+    go_to_home();
     echo '<br><a href="../logout.php">LOGOUT</a>';
 }
 
-
+function go_to_home() {
+    switch ($_SESSION['user_data']['type']) {
+        case 'faculty':
+            echo '<script>location.href="/faculty/index.php"</script>';
+            break;
+        case 'student':
+            echo '<script>location.href="/student/index.php"</script>';
+            break;
+        default:
+            break;
+    }
+}
