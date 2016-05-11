@@ -3,14 +3,11 @@ session_start();
 set_time_limit(0);
 require_once $_SERVER["DOCUMENT_ROOT"] . '/../configs/auto_config.php';
 //set_time_limit(0);
-$target_file = getenv("BASE_DIR") . "/uploads/" . $_GET['filename'];
 //$_SESSION['filePathForStudentList'] = $target_file;
 //header("Location: sheet_to_db.php");
 
-$sql1 = "DROP TABLE IF EXISTS `bpdc-arcd-db`.`faculty_course_list`;"
-        . "CREATE TABLE `bpdc-arcd-db`.`faculty_course_list` "
-        . "( `psrn_no` VARCHAR(20) NOT NULL , `comp_code` INT NOT NULL ,"
-        . " `section_code` VARCHAR(5) NOT NULL , `id` INT NOT NULL AUTO_INCREMENT ,"
+$sql1 = "CREATE TABLE IF NOT EXISTS `bpdc-arcd-db`.`student_course_attendance_list` "
+        . "( `id` int(11) NOT NULL , `attendance` INT NOT NULL ,"
         . " PRIMARY KEY (`id`)) ENGINE = InnoDB;";
 try {
     $stmt = $dbConn->prepare($sql1);
@@ -19,7 +16,11 @@ try {
     
 }
 
-$sql2 = "INSERT INTO `bpdc-arcd-db`.`faculty_course_list` (`psrn_no`, `comp_code`, `section_code`) VALUES (?, ?, ?)";
+$sql2 = "INSERT INTO `student_course_attendance_list`(`id`, `attendance`) VALUES ("
+        . "(SELECT `id`  FROM `student_course_list` "
+        . "WHERE `bits_id` = ? AND `comp_code` = ? AND `section_code` = ? LIMIT 1)"
+        . ", ?)"
+        . "ON DUPLICATE KEY UPDATE `attendance` = ?"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,21 +68,35 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`faculty_course_list` (`psrn_no`, `comp_code
         <?php
         flush();
         try {
+            $start_time = microtime(TRUE);
             $stmt = $dbConn->prepare($sql2);
             $dbConn->beginTransaction();
             //start----*
-            require_once $_SERVER["DOCUMENT_ROOT"] . '/../tools/sheet_to_db_main.php';
-
-            class A extends sheet_to_db {
-
-                protected function executer($row) {
-                    $this->stmt->execute(array($row[0], $row[1], $row[4]));
+            $i = 1;
+            $data = $_SESSION['attendance_data_to_process'];
+            $meta = $data[0];
+            $totRows = count($data);
+            while ($i < count($data)) {
+                $row = $data[$i];
+                if (!validate_row($row)) {
+                    echo "!!SKIPPING $rowIndex";
+                    continue;
                 }
-
+                if ($i > 1) {
+                    $stmt->execute(array($row[0], $meta[1], $meta[2], $row[1], $row[1]));
+                    var_dump(array($row[0], $meta[1], $meta[2], $row[1], $row[1]));
+                }
+                if ($i % 5 == 0) {
+                    $current_time = microtime(TRUE);
+                    $time_diff = $current_time - $start_time;
+                    $percent_compl = (100 * $i / $totRows);
+                    $approx_time_remain = ($time_diff / $percent_compl) * (100 - $percent_compl);
+                    echo '<script>updateProgress(' . $percent_compl . ', ' . $approx_time_remain . ')</script>';
+                    //ob_flush();
+                    flush();
+                }
+                $i++;
             }
-
-            $obj = new A($stmt, 'COURSE-INSTRUCTOR DETAILS', $target_file);
-            $obj->operate();
             //end-----*
             $dbConn->commit();
             echo "New records created successfully";

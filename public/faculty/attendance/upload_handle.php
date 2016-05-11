@@ -54,13 +54,15 @@ if ($uploadOk == 0) {
             //  Read a row of data into an array
             $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
             //var_dump($rowData);
+            if(is_null($rowData[0][1])){
+                continue;
+            }
             echo "<br>{$rowData[0][1]}------------{$rowData[0][10]}";
             array_push($to_save_data, array($rowData[0][1], $rowData[0][10]));
         }
-        var_dump($to_save_data);
         $_SESSION['attendance_data_to_process'] = $to_save_data;
-        die("<h1>MANUAL FORCE DIE TO PAGE: Finished iterating thru the sheet and saving required data to current session!!</h1>");
-        echo '<a href="sheet_to_db.php?filename=' . basename($target_file) . '">CONFIRM</a>';
+        
+        echo '<a href="update.php?">CONFIRM</a>';
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
