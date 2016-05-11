@@ -8,8 +8,8 @@ if (!isset($_SESSION['user_data'])) {
 //require_once $_SERVER["DOCUMENT_ROOT"] . '/../configs/debugger.php';
 //Insert your cient ID and secret 
 //You can get it from : https://console.developers.google.com/
-    $client_id = '543618368896-pdttlgf1v8caca51dp017npqu1qgcei4.apps.googleusercontent.com';
-    $client_secret = 'lLkfNni6luZREbSfwx8PBbm_';
+    $client_id = getenv("GSDKCONNSTR_clientid");
+    $client_secret = getenv("GSDKCONNSTR_clientsecret");
     $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/login/google-login-redirect/';
 
 //incase of logout request, just unset the session var

@@ -5,7 +5,9 @@
         <group>
             <file>file:/Users/alokrajiv/Documents/AlokDevelopmentFolder/bpdc-arcd/public/faculty/attendance/upload_handle.php</file>
             <file>file:/Users/alokrajiv/Documents/AlokDevelopmentFolder/bpdc-arcd/public/faculty/attendance/index.php</file>
-            <file>file:/Users/alokrajiv/Documents/AlokDevelopmentFolder/bpdc-arcd/public/faculty/index.php</file>
+            <file>file:/Users/alokrajiv/Documents/AlokDevelopmentFolder/bpdc-arcd/public/faculty/attendance/sheet_to_db.php</file>
+            <file>file:/Users/alokrajiv/Documents/AlokDevelopmentFolder/bpdc-arcd/public/faculty/attendance/re-enter.php</file>
+            <file>file:/Users/alokrajiv/Documents/AlokDevelopmentFolder/bpdc-arcd/public/faculty/attendance/upload.php</file>
         </group>
     </open-files>
 </project-private>
