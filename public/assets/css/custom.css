@@ -1,0 +1,42 @@
+.container-laydown{
+	width:100%;
+}
+.menu-button{
+	margin-top: 5vh;
+}
+.welcome-to{
+	margin-top: 4%;
+	
+}
+.bits-pilani{
+	margin-top:0%;
+}
+.intranet-portal{
+	
+
+}
+.heading-welcome{
+	color: #000;
+	font-weight: bold;
+	font-family: 'Arial', sans-serif;
+	font-size:125%;
+}
+.intro{
+	margin-top:10%;
+}
+.login-button{
+	margin-top:2%;
+}
+.modal-links{
+	color: #333333;
+}
+footer{
+    position:fixed;
+    right:0;
+    bottom:0;
+    margin:0;
+    width:20%;
+    height:15%;
+    background:url(../img/tricolored.png) no-repeat bottom right;
+    background-size:100%;
+}

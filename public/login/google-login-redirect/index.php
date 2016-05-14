@@ -64,27 +64,26 @@ if (!isset($_SESSION['user_data'])) {
 
 
 //Display user info or display login url as per the info we have.
-    echo '<div style="margin:20px">';
+    echo '<div style="margin:2%;font-family:arial " >';
     if (isset($authUrl)) {
-        //show login url
+        //user not logged in: this is code for button to let user login
         echo '<div align="center">';
-        echo '<h3>Login with Google</h3>';
-        echo '<div>Please click login button to login using Google.</div>';
-        echo '<a class="login" href="' . $authUrl . '"><img src="signin_button.png" /></a>';
+        echo '<h1>Login with Google</h1>';
+        echo '<div><h3>Please click the Sign in button</h3></div>';
+        echo '<div style=" position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);"><a class="login" href="' . $authUrl . '"><button style="background:none"><img src="btn_google_signin_light_pressed_web@2x.png" /></button></a></div>';
         echo '</div>';
     } else {
-
-        $user = $service->userinfo->get(); //get user info 
-        //var_dump($user);
+// user is already logged in. fetch info from the google api and check if the user is from bits
+        $user = $service->userinfo->get(); 
         if (substr($user['email'], -24) !== "@dubai.bits-pilani.ac.in") {
             $actual_link = "http://{$_SERVER['HTTP_HOST']}/login/logout.php";
             echo '<script>console.log("' . $actual_link . '")</script>';
             echo '<b>' . $user['email'] . '</b>'
-            . ' is not affliated to BITS PILANI DUBAI'
-            . '<br>as it isn\'t part of domain @dubai.bits-pilani.ac.in . please '
-            . '<br>login with account of form <b> *******@dubai.bits-pilani.ac.in</b>'
+            . ' <span style="color:red;">is not affliated to BITS PILANI Dubai'
+            . '<br>as it isn\'t part of domain @dubai.bits-pilani.ac.in . Please '
+            . '<br>login with account of form</span> <b> *******@dubai.bits-pilani.ac.in</b>'
             . '<br><a href="https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=' . $actual_link . '"">'
-            . '<br>CLICK TO LOGOUT AND SIGN IN WITH BITS PILANI DUBAI ACCOUNT</a>';
+            . '<br>Click to Logout and Sing In with BITS Pilani Dubai account</a>';
             die();
         } else {
             $userId = substr($user['email'], 0, -24);
