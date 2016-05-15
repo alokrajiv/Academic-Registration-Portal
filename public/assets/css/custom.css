@@ -40,3 +40,9 @@ footer{
     background:url(../img/tricolored.png) no-repeat bottom right;
     background-size:100%;
 }
+.custom-table{
+	margin-top:15vh;
+}
+td,th{
+	text-align: center;
+}

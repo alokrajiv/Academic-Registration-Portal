@@ -53,7 +53,7 @@
                 <li><a href="http://www.pingpong-labs.com" target="_blank">Visit Site</a></li>
                 <li class="dropdown ">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <?=$_SESSION['user_data']['full_name']?>
+                        <?=ucwords(strtolower($_SESSION['user_data']['full_name']))?>
                         <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="dropdown-header">SETTINGS</li>
@@ -127,7 +127,7 @@
         <div class="col-md-10 content">
               <div class="panel panel-default">
     <div class="panel-heading">
-        Welcome <?= $_SESSION['user_data']['full_name']?>
+        Welcome <?= ucwords(strtolower($_SESSION['user_data']['full_name']))?>
     </div>
     <div class="panel-body">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
