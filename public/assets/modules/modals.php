@@ -19,7 +19,7 @@
                 <h4><a href="#" class="modal-links" id="par">Parents</a></h4>
               </div>
               <div class="col-md-2 col-md-offset-4 col-lg-2 col-lg-offset-4 col-sm-2 col-sm-offset-4 col-xs-2 col-xs-offset-4" >
-                <h4><a href="http://localhost-bpdc-arcd.com/login/google-login-redirect/"class="modal-links" target="_blank" id="stud">Students</a></h4>
+                <h4><a href="/login/google-login-redirect/"class="modal-links" target="_blank" id="stud">Students</a></h4>
               </div>
             </div>
           </div>
@@ -27,10 +27,10 @@
       </div>
     </div>
     <script>
-    attachRedirect("acc", "http://localhost-bpdc-arcd.com/login/google-login-redirect/");
-    attachRedirect("adm", "http://localhost-bpdc-arcd.com/login/google-login-redirect/");
-    attachRedirect("stud", "http://localhost-bpdc-arcd.com/login/google-login-redirect/");
-    attachRedirect("par", "http://localhost-bpdc-arcd.com/login/google-login-redirect/");
+    attachRedirect("acc", "/login/google-login-redirect/");
+    attachRedirect("adm", "/login/google-login-redirect/");
+    attachRedirect("stud", "/login/google-login-redirect/");
+    attachRedirect("par", "/login/google-login-redirect/");
     function attachRedirect(id, url){
       $('#'+id).click(function(){
         window.location(url);
