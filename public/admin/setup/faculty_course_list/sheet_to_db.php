@@ -12,14 +12,23 @@ $sql1 = "DROP TABLE IF EXISTS `bpdc-arcd-db`.`faculty_course_list`;"
         . "( `psrn_no` VARCHAR(20) NOT NULL , `comp_code` INT NOT NULL ,"
         . " `section_code` VARCHAR(5) NOT NULL , `id` INT NOT NULL AUTO_INCREMENT ,"
         . " PRIMARY KEY (`id`)) ENGINE = InnoDB;";
+$sql3 = "DROP TABLE IF EXISTS `bpdc-arcd-db`.`course_list`;"
+        . "CREATE TABLE `bpdc-arcd-db`.`course_list` "
+        . "( `course_name` VARCHAR(80) NOT NULL , `comp_code` INT NOT NULL ,"
+        . "  `id` INT NOT NULL AUTO_INCREMENT ,"
+        . " PRIMARY KEY (`id`)) ENGINE = InnoDB;";
 try {
     $stmt = $dbConn->prepare($sql1);
+    $stmt->execute();
+    $stmt = $dbConn->prepare($sql3);
     $stmt->execute();
 } catch (Exception $ex) {
     
 }
 
 $sql2 = "INSERT INTO `bpdc-arcd-db`.`faculty_course_list` (`psrn_no`, `comp_code`, `section_code`) VALUES (?, ?, ?)";
+$sql4 = "INSERT INTO `bpdc-arcd-db`.`course_list` (`course_name`, `comp_code`) VALUES (?, ?);";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,6 +75,7 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`faculty_course_list` (`psrn_no`, `comp_code
         </script>
         <?php
         flush();
+        $course_id_name = array();
         try {
             $stmt = $dbConn->prepare($sql2);
             $dbConn->beginTransaction();
@@ -75,13 +85,30 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`faculty_course_list` (`psrn_no`, `comp_code
             class A extends sheet_to_db {
 
                 protected function executer($row) {
-                    $this->stmt->execute(array($row[0], $row[1], $row[4]));
+                    if(!isset($data[$row[0]])){
+                        $this->data[$row[0]] = $row[4];
+                    }
+                    $this->stmt->execute(array($row[5], $row[0], $row[1]));
                 }
 
             }
 
             $obj = new A($stmt, 'COURSE-INSTRUCTOR DETAILS', $target_file);
-            $obj->operate();
+            $course_id_name = $obj->operate();
+            $data_input = array();
+            foreach ($course_id_name as $key => $value) {
+                array_push($data_input, array($key,$value));
+            }
+            class B extends sheet_to_db {
+
+                protected function executer($row) {
+                    $this->stmt->execute(array($row[1], $row[0]));
+                }
+
+            }
+            $stmt = $dbConn->prepare($sql4);
+            $obj_B = new B($stmt, 'COURSE-INSTRUCTOR DETAILS', $target_file);
+            $course_id_name = $obj_B->operate_alt($data_input);
             //end-----*
             $dbConn->commit();
             echo "New records created successfully";

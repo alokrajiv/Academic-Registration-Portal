@@ -6,7 +6,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/../configs/auto_config.php';
 
 abstract class sheet_to_db {
 
-    public $stmt,$sheetToRead,$target_file;
+    public $stmt,$sheetToRead,$target_file,$data;
 
     public function __construct($stmt,$sheetToRead,$target_file) {
         $this->stmt = $stmt;
@@ -61,8 +61,29 @@ abstract class sheet_to_db {
             }
         }
         echo "Found data on $i rows out of $totRows present rows";
+        return $this->data;
     }
-    
+    public function operate_alt($data_input) {
+        $start_time = microtime(TRUE);
+        flush();
+        $i = 0;
+        $totRows = count($data_input);
+        foreach ($data_input as $rowIndex => $row) {
+            $i++;
+            $this->executer($row);
+            if ($i % 5 == 0) {
+                $current_time = microtime(TRUE);
+                $time_diff = $current_time - $start_time;
+                $percent_compl = (100 * $i / $totRows);
+                $approx_time_remain = ($time_diff / $percent_compl) * (100 - $percent_compl);
+                echo '<script>updateProgress(' . $percent_compl . ', ' . $approx_time_remain . ')</script>';
+                //ob_flush();
+                flush();
+            }
+        }
+        echo "Found data on $i rows out of $totRows present rows";
+        return $this->data;
+    }
     abstract protected function executer($row);
 
 }

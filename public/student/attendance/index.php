@@ -2,10 +2,12 @@
 session_start();
 require_once $_SERVER["DOCUMENT_ROOT"] . '/../configs/auto_config.php';
 $sql1 = "SELECT "
+        . "`course_list`.`course_name`,`student_course_list`.`comp_code`,"
         . "`student_course_list`.`comp_code`,`student_course_list`.`section_code`,"
         . "`student_course_attendance_list`.`attendance` "
-        . "FROM `student_course_list` JOIN `student_course_attendance_list` "
-        . "ON `student_course_list`.`id` = `student_course_attendance_list`.`id`"
+        . "FROM `student_course_list` JOIN `student_course_attendance_list` JOIN `course_list`"
+        . "ON `student_course_list`.`id` = `student_course_attendance_list`.`id` "
+        . "AND `student_course_list`.`comp_code` = `course_list`.`comp_code`"
         . "WHERE `bits_id` = ?";
 try {
     $stmt = $dbConn->prepare($sql1);
@@ -48,10 +50,13 @@ and open the template in the editor.
                         <thead>
                             <tr>
                                 <th>
-                                    Comp_code
+                                    Course Name
                                 </th>
                                 <th>
-                                    Section
+                                    Course No
+                                </th>
+                                <th>
+                                    Section No
                                 </th>
                                 <th>
                                     Attendance
@@ -61,6 +66,7 @@ and open the template in the editor.
                         <tbody>
                             <?php foreach ($data as $key => $value) {
                                     echo "<tr>
+                                            <td>{$value['course_name']}</td>
                                             <td>{$value['comp_code']}</td>
                                             <td>{$value['section_code']}</td>
                                             <td>{$value['attendance']} %</td>
