@@ -69,6 +69,9 @@ and open the template in the editor.
                                 <th>
                                     Attendance
                                 </th>
+                                <th>
+                                    Details
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,6 +81,7 @@ and open the template in the editor.
                                             <td>{$value['section_code']}</td>
                                             <td>{$value['full_name']}</td>
                                             <td>{$value['attendance']} %</td>
+                                            <td><button class='btn btn-default' ><a href='https://www.google.com' target='_blank'>Click Here</a></button> </td>
                                         </tr>";
                            } ?>
                         </tbody>
