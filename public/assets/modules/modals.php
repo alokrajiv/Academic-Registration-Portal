@@ -19,7 +19,7 @@
                 <h4><a href="/login/google-login-redirect/" class="modal-links" id="par">Parents</a></h4>
               </div>
               <div class="col-md-2 col-md-offset-4 col-lg-2 col-lg-offset-4 col-sm-2 col-sm-offset-4 col-xs-2 col-xs-offset-4" >
-                <h4><a href="/login/google-login-redirect/" class="modal-links" target="_blank" id="stud">Students</a></h4>
+                <h4><a href="/login/google-login-redirect/" class="modal-links" target="_blank" id="stud">Faculty/Students</a></h4>
               </div>
             </div>
           </div>

@@ -2,13 +2,21 @@
 session_start();
 require_once $_SERVER["DOCUMENT_ROOT"] . '/../configs/auto_config.php';
 $sql1 = "SELECT "
-        . "`course_list`.`course_name`,`student_course_list`.`comp_code`,"
-        . "`student_course_list`.`comp_code`,`student_course_list`.`section_code`,"
+        . "`faculty_list`.`full_name`, `faculty_course_list`.`psrn_no`, "
+        . "`course_list`.`course_name`, `student_course_list`.`comp_code`, "
+        . "`student_course_list`.`section_code`, "
         . "`student_course_attendance_list`.`attendance` "
-        . "FROM `student_course_list` JOIN `student_course_attendance_list` JOIN `course_list`"
-        . "ON `student_course_list`.`id` = `student_course_attendance_list`.`id` "
-        . "AND `student_course_list`.`comp_code` = `course_list`.`comp_code`"
-        . "WHERE `bits_id` = ?";
+        . "FROM "
+        . "`student_course_list` JOIN `student_course_attendance_list` JOIN "
+        . "`course_list` JOIN `faculty_course_list` JOIN `faculty_list` "
+        . "ON "
+        . "`student_course_list`.`id` = `student_course_attendance_list`.`id` AND"
+        . " `student_course_list`.`comp_code` = `course_list`.`comp_code` AND"
+        . " `faculty_course_list`.`comp_code` = `student_course_list`.`comp_code` AND"
+        . " `faculty_course_list`.`section_code` = `student_course_list`.`section_code` AND"
+        . " `faculty_list`.`psrn_no` = `faculty_course_list`.`psrn_no`"
+        . "WHERE "
+        . "`bits_id` = ?";
 try {
     $stmt = $dbConn->prepare($sql1);
     $stmt->execute(array($_SESSION['user_data']['bits_id']));
@@ -53,10 +61,10 @@ and open the template in the editor.
                                     Course Name
                                 </th>
                                 <th>
-                                    Course No
+                                    Section No
                                 </th>
                                 <th>
-                                    Section No
+                                    Faculty Name
                                 </th>
                                 <th>
                                     Attendance
@@ -65,21 +73,15 @@ and open the template in the editor.
                         </thead>
                         <tbody>
                             <?php foreach ($data as $key => $value) {
-                                    echo "<tr>
+                                    echo "<tr onclick=''>
                                             <td>{$value['course_name']}</td>
-                                            <td>{$value['comp_code']}</td>
                                             <td>{$value['section_code']}</td>
+                                            <td>{$value['full_name']}</td>
                                             <td>{$value['attendance']} %</td>
                                         </tr>";
                            } ?>
                         </tbody>
                     </table> 
-
-        <!--<?php
-       // foreach ($data as $key => $value) {
-         //   echo "{$value['comp_code']} - {$value['section_code']} - {$value['attendance']}<br>";
-       // }
-        ?>-->
         </div>
     </body>
 </html>
