@@ -1,3 +1,7 @@
+.navbar-brand-logo{
+	margin-top:-10px;
+	display: inline;
+}
 .navbar-default .navbar-nav>li>a {
     color: #333;
 }
@@ -153,6 +157,9 @@ h1.page-header {
 }
 /* small screen */
 @media (max-width: 768px) {
+	.navbar-brand-logo{
+		display: inline;
+	}
 	.side-menu {
 		position: relative;
 		width: 100%;

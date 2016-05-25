@@ -40,10 +40,12 @@ and open the template in the editor.
         <br>
         <br>
         <br>
+        <div id="faculty-upload">
         <form action="upload_handle.php" method="POST" enctype="multipart/form-data">
             LOAD NEW FILE: &nbsp;<input type="file" name="xlsx_file" />
             <input type="submit" name="upload" value="Upload" />
         </form>
+        </div>
         <?php
         $target_dir = getenv("BASE_DIR") . "/uploads/";
         $fileStore = array();

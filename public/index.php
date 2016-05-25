@@ -17,7 +17,8 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="assets/js/bootstrap.min.js"></script>
 
-
+		 <!--Favicon-->
+    	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico?" />
 	</head>
 	<body>
 		<!-- Modal -->

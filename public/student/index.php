@@ -9,7 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ERP-Dashboard</title>
-        
+     
+     <!-- Custom Css -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/dashboard.css">   
+
     <!-- Latest compiled and minified CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Ib5WUYOh/fqe9wT9MDBX+VgUWQuUf8oDH3yuR9Kr+6Y5ejq92KR8LEuCbRiGZpG" crossorigin="anonymous">
     <!--Jquery Plugin-->    
@@ -19,10 +22,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="../assets/js/dashboard.js"></script>
 
-    <!-- Custom Css -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/dashboard.css">
+    <!--Favicon-->
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico?" />
 </head>
 <body>
+    <?php include '../assets/modules/attendance-modal.php';?>
     <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -37,6 +41,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
+                <img src="../assets/img/bitslogo1.png" alt="" class="img-responsive navbar-brand-logo" style="display: inline;">
                 BITS Pilani
             </a>
         </div>
@@ -139,6 +144,7 @@
             proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </div>
     </div>
+  <!--  <button class='btn btn-primary' type='button' data-toggle='modal' data-target='#attendanceModal' >Click Here</button>--> 
 </div>
         </div>
         <!--<footer class="pull-left footer">
@@ -160,7 +166,7 @@
                 $('#dashboard-div').load('# #dashboard-data');
                 $('#dashboard').addClass('active');
                 $('#see-attendance').removeClass('active');
-            })
+            });
     });
 </script>
 </html>

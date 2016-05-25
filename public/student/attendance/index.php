@@ -53,6 +53,7 @@ and open the template in the editor.
         <script src="../../assets/js/bootstrap.min.js"></script>
     </head>
     <body>
+
         <div class="container custom-table" >
            <table class="table table-bordered table-hover table-responsive" id="attendance-table">
                         <thead>
@@ -81,7 +82,7 @@ and open the template in the editor.
                                             <td class='text-center'>{$value['section_code']}</td>
                                             <td class='text-center'>{$value['full_name']}</td>
                                             <td class='text-center'>{$value['attendance']} %</td>
-                                            <td class='text-center'><button class='btn btn-primary ' ><a href='https://www.google.com' target='_blank' style='color:white';>Click Here</a></button> </td>
+                                            <td class='text-center'><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#attendanceModal' >Click Here</button> </td>
                                         </tr>";
                            } ?>
                         </tbody>

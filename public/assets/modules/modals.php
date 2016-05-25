@@ -3,7 +3,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title">Login</h3>
+            <h3 class="modal-title text-center">Login</h3>
           </div>
           <div class="modal-body">
             <div class="row">
@@ -19,7 +19,7 @@
                 <h4><a href="/login/google-login-redirect/" class="modal-links" id="par">Parents</a></h4>
               </div>
               <div class="col-md-2 col-md-offset-4 col-lg-2 col-lg-offset-4 col-sm-2 col-sm-offset-4 col-xs-2 col-xs-offset-4" >
-                <h4><a href="/login/google-login-redirect/" class="modal-links" target="_blank" id="stud">Faculty/Students</a></h4>
+                <h4><a href="/login/google-login-redirect/" class="modal-links" id="stud">Faculty/Students</a></h4>
               </div>
             </div>
           </div>
