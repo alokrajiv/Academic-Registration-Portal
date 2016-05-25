@@ -17,10 +17,10 @@
     
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="..assets/js/dashboard.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
 
     <!-- Custom Css -->
-    <link rel="stylesheet" type="text/css" href="..assets/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/dashboard.css">
 </head>
 <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -78,8 +78,8 @@
             <!-- Main Menu -->
             <div class="side-menu-container">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
-                    <li><a href="attendance/"><span class="glyphicon glyphicon-user"></span>See Attendance</a></li>
+                    <li class="active" id="dashboard"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+                    <li id="see-attendance"><a  href="#"><span class="glyphicon glyphicon-user"></span>See Attendance</a></li>
                     <li><a href="viewclients.php"><span class="glyphicon glyphicon-cloud"></span> Existing Customers</a></li>
 
                     <!-- Dropdown-->
@@ -129,13 +129,15 @@
     <div class="panel-heading">
         Welcome <?= ucwords(strtolower($_SESSION['user_data']['full_name']))?>
     </div>
-    <div class="panel-body">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <div class="panel-body" id="dashboard-div">
+        <div id="dashboard-data">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
     </div>
 </div>
         </div>
@@ -147,4 +149,18 @@
         </footer>-->
     </div>
 </body>
+<script>
+    $(document).ready(function(){
+            $('#see-attendance').click(function(){
+                $('#see-attendance').addClass('active');
+                $('#dashboard').removeClass('active');
+                $('#dashboard-div').load('attendance/ #attendance-table');
+            });
+            $('#dashboard').click(function(){
+                $('#dashboard-div').load('# #dashboard-data');
+                $('#dashboard').addClass('active');
+                $('#see-attendance').removeClass('active');
+            })
+    });
+</script>
 </html>

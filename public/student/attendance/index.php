@@ -53,23 +53,23 @@ and open the template in the editor.
         <script src="../../assets/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div class="container custom-table">
-           <table class="table table-bordered table-hover table-responsive">
+        <div class="container custom-table" >
+           <table class="table table-bordered table-hover table-responsive" id="attendance-table">
                         <thead>
                             <tr>
-                                <th>
+                                <th class="text-center">
                                     Course Name
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     Section No
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     Faculty Name
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     Attendance
                                 </th>
-                                <th>
+                                <th class="text-center">
                                     Details
                                 </th>
                             </tr>
@@ -77,11 +77,11 @@ and open the template in the editor.
                         <tbody>
                             <?php foreach ($data as $key => $value) {
                                     echo "<tr onclick=''>
-                                            <td>{$value['course_name']}</td>
-                                            <td>{$value['section_code']}</td>
-                                            <td>{$value['full_name']}</td>
-                                            <td>{$value['attendance']} %</td>
-                                            <td><button class='btn btn-default' ><a href='https://www.google.com' target='_blank'>Click Here</a></button> </td>
+                                            <td class='text-center'>{$value['course_name']}</td>
+                                            <td class='text-center'>{$value['section_code']}</td>
+                                            <td class='text-center'>{$value['full_name']}</td>
+                                            <td class='text-center'>{$value['attendance']} %</td>
+                                            <td class='text-center'><button class='btn btn-primary ' ><a href='https://www.google.com' target='_blank' style='color:white';>Click Here</a></button> </td>
                                         </tr>";
                            } ?>
                         </tbody>
