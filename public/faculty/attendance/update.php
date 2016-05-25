@@ -7,8 +7,11 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/../configs/auto_config.php';
 //header("Location: sheet_to_db.php");
 
 $sql1 = "CREATE TABLE IF NOT EXISTS `bpdc-arcd-db`.`student_course_attendance_list` "
-        . "( `id` int(11) NOT NULL , `attendance` INT NOT NULL ,"
-        . " PRIMARY KEY (`id`)) ENGINE = InnoDB;";
+        . "( `comp_code` INT NOT NULL , `section_code` VARCHAR(5) NOT NULL ,"
+        . " `bits_id` VARCHAR(20) NOT NULL , `attendance` INT NOT NULL ,"
+        . " `data` TEXT NOT NULL , "
+        . "PRIMARY KEY (`comp_code`,`section_code`,`bits_id`)) "
+        . "ENGINE = InnoDB;";
 try {
     $stmt = $dbConn->prepare($sql1);
     $stmt->execute();
@@ -16,11 +19,11 @@ try {
     
 }
 
-$sql2 = "INSERT INTO `student_course_attendance_list`(`id`, `attendance`) VALUES ("
-        . "(SELECT `id`  FROM `student_course_list` "
-        . "WHERE `bits_id` = ? AND `comp_code` = ? AND `section_code` = ? LIMIT 1)"
-        . ", ?)"
-        . "ON DUPLICATE KEY UPDATE `attendance` = ?"
+$sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_attendance_list` "
+        . "(`comp_code`, `section_code`, `bits_id`, `attendance`, `data`) "
+        . "VALUES (?, ?, ?, ?, ?)"
+        . "ON DUPLICATE KEY UPDATE `comp_code` = ?, `section_code` = ?, "
+        . "`bits_id` = ?, `attendance` = ?, `data` = ?"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,8 +86,7 @@ $sql2 = "INSERT INTO `student_course_attendance_list`(`id`, `attendance`) VALUES
                     continue;
                 }
                 if ($i > 1) {
-                    $stmt->execute(array($row[0], $meta[1], $meta[2], $row[1], $row[1]));
-                    var_dump(array($row[0], $meta[1], $meta[2], $row[1], $row[1]));
+                    $stmt->execute(array($row[0], $row[1], $row[2], $row[3], $row[4], $row[0], $row[1], $row[2], $row[3], $row[4]));
                 }
                 if ($i % 5 == 0) {
                     $current_time = microtime(TRUE);

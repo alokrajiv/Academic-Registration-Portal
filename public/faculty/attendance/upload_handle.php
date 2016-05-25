@@ -58,7 +58,7 @@ if ($uploadOk == 0) {
                 continue;
             }
             echo "<br>{$rowData[0][1]}------------{$rowData[0][10]}";
-            array_push($to_save_data, array($rowData[0][1], $rowData[0][10]));
+            array_push($to_save_data, array($controlRowData[0][5], $controlRowData[0][7], $rowData[0][1], $rowData[0][10], json_encode($rowData)));
         }
         $_SESSION['attendance_data_to_process'] = $to_save_data;
         
