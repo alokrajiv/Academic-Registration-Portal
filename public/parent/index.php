@@ -6,10 +6,30 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title></title>
+        <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>ARCD Portal</title>
+		<!--Jquery Plugin-->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery-ui.js"></script>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="../assets/css/bootstrap-theme.min.css">
+		<!--Custom CSS-->
+		<link rel="stylesheet" type="text/css" href="../assets/css/custom.css" />
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="assets/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <a href="attendance/">SEE ATTENDANCE</a>
+    	<div class="container">
+    		<div class="">
+    			<a href="attendance/"><button type="button" class="btn  btn-primary btn-block" style="margin:auto;margin-top:50vh;width:200px;">See Attendance</button></a>
+    		</div>
+    		<div class="">
+    			<a href="#"><button type="button" class="btn  btn-primary btn-block" style="margin:auto;margin-top:10vh;width:200px;">Message Faculty</button></a>
+    		</div>
+    	</div>
     </body>
 </html>

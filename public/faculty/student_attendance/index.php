@@ -66,7 +66,7 @@ and open the template in the editor.
         <div class="container custom-table" >
             <a href="/faculty/">BACK TO DASH</a>
             <form method="post" >
-                STUDENT BITS-ID:<input type="text" name="bits_id">
+                STUDENT BITS-ID:&nbsp;&nbsp;&nbsp;<input type="text" name="bits_id" placeholder="Enter Here.. ">
                 <button type="submit">GO</button>
             </form>
             <?php
@@ -79,8 +79,8 @@ and open the template in the editor.
                 }else{
                 ?>
                 <br>
-                STUDENT NAME: <?=$data[0]['student_name']?><br><br>
-               <table class="table table-bordered table-hover table-responsive" id="attendance-table">
+                <h4><?=$data[0]['student_name']?></h4><br>
+                               <table class="table table-bordered table-hover table-responsive" id="attendance-table">
                             <thead>
                                 <tr>
                                     <th class="text-center">
