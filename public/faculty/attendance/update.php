@@ -102,6 +102,10 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_attendance_list` "
             //end-----*
             $dbConn->commit();
             echo "New $i records created successfully";
+            echo '<script>updateProgress(100, 0)</script>';
+            //ob_flush();
+            echo '<br><a href="/faculty/">BACK TO DASH</a>';
+            flush();
         } catch (PDOException $e) {
             $dbConn->rollback();
             echo "Error: " . $e->getMessage();

@@ -58,11 +58,14 @@ if ($uploadOk == 0) {
                 continue;
             }
             echo "<br>{$rowData[0][1]}------------{$rowData[0][10]}";
+            flush();
             array_push($to_save_data, array($controlRowData[0][5], $controlRowData[0][7], $rowData[0][1], $rowData[0][10], json_encode($rowData)));
         }
         $_SESSION['attendance_data_to_process'] = $to_save_data;
         
-        echo '<a href="update.php?">CONFIRM</a>';
+        echo '<br><h3><a href="update.php?">CONFIRM</a></h3> <br><br><br><br><br><br><br><br><script>window.scrollTo(0,document.body.scrollHeight);</script>';
+        
+        
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

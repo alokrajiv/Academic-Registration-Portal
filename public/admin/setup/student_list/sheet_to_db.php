@@ -9,7 +9,8 @@ $target_file = getenv("BASE_DIR") . "/uploads/" . $_GET['filename'];
 
 $sql1 = "DROP TABLE IF EXISTS `bpdc-arcd-db`.`student_list`;"
         . "CREATE TABLE `bpdc-arcd-db`.`student_list` ( `bits_id` VARCHAR(20) NOT NULL , "
-        . "`full_name` VARCHAR(60) NOT NULL , `institute_email` VARCHAR(60) NOT NULL , "
+        . "`full_name` VARCHAR(60) NOT NULL , `institute_email` VARCHAR(60) NOT NULL ,"
+        . " `dob` DATE NOT NULL , "
         . "`personal_email` VARCHAR(60) NOT NULL , UNIQUE `institute_email` (`institute_email`), "
         . "UNIQUE `personal_email` (`personal_email`)) ENGINE = InnoDB;";
 try {
@@ -19,7 +20,8 @@ try {
     
 }
 
-$sql2 = "INSERT INTO `bpdc-arcd-db`.`student_list` (`bits_id`, `full_name`, `institute_email`, `personal_email`) VALUES (?, ?, ?, ?)";
+$sql2 = "INSERT INTO `bpdc-arcd-db`.`student_list` (`bits_id`, `full_name`, `institute_email`, `personal_email`, `dob`)"
+        . " VALUES (?, ?, ?, ?, ?)";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +71,8 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_list` (`bits_id`, `full_name`, `ins
             class A extends sheet_to_db {
 
                 protected function executer($row) {
-                    $this->stmt->execute(array($row[0], $row[1], $row[2], $row[3]));
+                    var_dump($row);
+                    $this->stmt->execute(array($row[0], $row[1], $row[2], $row[3], $row[4]->date));
                 }
 
             }
@@ -79,6 +82,9 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_list` (`bits_id`, `full_name`, `ins
             
             $dbConn->commit();
             echo "New records created successfully";
+            echo '<script>updateProgress(100, 0)</script>';
+            //ob_flush();
+            flush();
         } catch (PDOException $e) {
             $dbConn->rollback();
             echo "Error: " . $e->getMessage();

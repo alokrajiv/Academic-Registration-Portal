@@ -1,5 +1,7 @@
 <?php
 session_start();
+$url_path = $_SERVER['REQUEST_URI'];
+$url_path_blocks = explode("/", $_SERVER['REQUEST_URI']);
 ?>
 <!DOCTYPE html>
 <!--
@@ -91,6 +93,7 @@ and open the template in the editor.
 	                <ul class="nav navbar-nav">
 	                    <li class="active" id="dashboard"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 	                    <li id="upload-attendance"><a  href="#"><span class="glyphicon glyphicon-user"></span>Upload Attendance</a></li>
+	                    <li id="see-attendance"><a  href="#"><span class="glyphicon glyphicon-user"></span>See Attendance</a></li>
 	                    <li><a href="viewclients.php"><span class="glyphicon glyphicon-cloud"></span> Existing Customers</a></li>
 
 	                    <!-- Dropdown-->
@@ -165,6 +168,9 @@ and open the template in the editor.
     	 		$('#upload-attendance').addClass('active');
                 $('#dashboard').removeClass('active');
                 $('#dashboard-div').load('attendance/ #faculty-upload');
+            });
+            $('#see-attendance').click(function(){
+                window.location = "student_attendance/";
             });
     	 $('#dashboard').click(function(){
                 $('#dashboard-div').load('# #dashboard-data');

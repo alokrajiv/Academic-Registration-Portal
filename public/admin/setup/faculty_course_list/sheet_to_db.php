@@ -112,6 +112,9 @@ $sql4 = "INSERT INTO `bpdc-arcd-db`.`course_list` (`course_name`, `comp_code`) V
             //end-----*
             $dbConn->commit();
             echo "New records created successfully";
+            echo '<script>updateProgress(100, 0)</script>';
+            //ob_flush();
+            flush();
         } catch (PDOException $e) {
             $dbConn->rollback();
             echo "Error: " . $e->getMessage();
