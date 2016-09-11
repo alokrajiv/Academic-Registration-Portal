@@ -1,0 +1,4 @@
+AuthUserFile /Users/alokrajiv/Documents/AlokDevelopmentFolder/bpdc-arcd/configs/.htpasswd
+AuthType Basic
+AuthName "ADMIN RESTRICTED AREA : IP LOGGED"
+Require valid-user
