@@ -2,7 +2,7 @@
 session_start();
 if ($_POST) {
     require_once $_SERVER["DOCUMENT_ROOT"] . '/../configs/auto_config.php';
-    $sql1 = "SELECT DISTINCT"
+    $sql1 = "SELECT "
             . "`student_list`.`full_name` AS 'student_name', "
             . "`faculty_list`.`full_name` AS 'faculty_name', "
             . "`faculty_course_list`.`psrn_no`, "

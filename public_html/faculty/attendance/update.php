@@ -77,6 +77,7 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_attendance_list` "
             //start----*
             $i = 1;
             $data = $_SESSION['attendance_data_to_process'];
+            count($data);
             $meta = $data[0];
             $totRows = count($data);
             while ($i < count($data)) {
@@ -85,7 +86,8 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_attendance_list` "
                     echo "!!SKIPPING $rowIndex";
                     continue;
                 }
-                if ($i > 1) {
+                if ($i >= 1) {
+                    echo "{$row[2]}<br>;";
                     $stmt->execute(array($row[0], $row[1], $row[2], $row[3], $row[4], $row[0], $row[1], $row[2], $row[3], $row[4]));
                 }
                 if ($i % 5 == 0) {
@@ -101,6 +103,7 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_attendance_list` "
             }
             //end-----*
             $dbConn->commit();
+            $i--; //to adjust last increment
             echo "New $i records created successfully";
             echo '<script>updateProgress(100, 0)</script>';
             //ob_flush();
