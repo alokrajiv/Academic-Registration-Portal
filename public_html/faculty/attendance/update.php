@@ -16,7 +16,7 @@ try {
     $stmt = $dbConn->prepare($sql1);
     $stmt->execute();
 } catch (Exception $ex) {
-    
+
 }
 
 $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_attendance_list` "

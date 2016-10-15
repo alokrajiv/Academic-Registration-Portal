@@ -62,8 +62,7 @@ if ($uploadOk == 0) {
             array_push($to_save_data, array($controlRowData[0][5], $controlRowData[0][7], $rowData[0][1], $rowData[0][11], json_encode($rowData)));
         }
         $_SESSION['attendance_data_to_process'] = $to_save_data;
-
-        echo '<br><h3><a href="update.php?">CONFIRM</a></h3> <br><br><br><br><br><br><br><br><script>window.scrollTo(0,document.body.scrollHeight);</script>';
+        echo "<br><h2> --> Course {$controlRowData[0][2]}({$controlRowData[0][5]}) section:{$controlRowData[0][7]} <--  </h2><h3><a href=\"update.php?\">CLICK THIS LINK TO CONFIRM UPDATION OF ATTENDANCE!  </a></h3> <br><br><br><br><br><br><br><br><script>window.scrollTo(0,document.body.scrollHeight);</script>";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
