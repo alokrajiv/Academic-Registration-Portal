@@ -88,12 +88,12 @@ checkIfLoggedInAs("student");
                                     <li><a href="#"><span class="glyphicon glyphicon-cloud"></span>Your Subjects</a></li>
 
                                     <!-- Dropdown-->
-                                    <li class="panel panel-default" id="dropdown">
+                               <!-- <li class="panel panel-default" id="dropdown">
                                         <a data-toggle="collapse" href="#dropdown-lvl1">
                                             <span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
                                         </a>
 
-                                        <!-- Dropdown level 1 -->
+                                        
                                         <div id="dropdown-lvl1" class="panel-collapse collapse">
                                             <div class="panel-body">
                                                 <ul class="nav navbar-nav">
@@ -101,7 +101,7 @@ checkIfLoggedInAs("student");
                                                     <li><a href="#">Link</a></li>
                                                     <li><a href="#">Link</a></li>
 
-                                                    <!-- Dropdown level 2 -->
+                                                    
                                                     <li class="panel panel-default" id="dropdown">
                                                         <a data-toggle="collapse" href="#dropdown-lvl2">
                                                             <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
@@ -121,7 +121,7 @@ checkIfLoggedInAs("student");
                                         </div>
                                     </li>
 
-                                    <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>  -->
 
                                 </ul>
                             </div><!-- /.navbar-collapse -->
