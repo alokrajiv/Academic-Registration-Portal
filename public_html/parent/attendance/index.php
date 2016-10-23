@@ -62,12 +62,27 @@ and open the template in the editor.
     </head>
     <body>
         
-        <div class="container custom-table" >
-            <form method="post" >
-                STUDENT BITS-ID:<input type="text" name="bits_id">
-                STUDENT DOB:<input type="date" name="dob">
-                <button type="submit">GO</button>
+        <div class="container" >
+            <div class="row custom-table">
+            <form method="post" class="form-horizontal" >
+                 <div class="form-group">
+                    <label for="bits_id" class="col-xs-3 col-sm-3 col-md-2 col-lg-2 control-label">Students's BITS Id:</label>
+                    <div class=" col-xs-4 col-sm-4 col-md-3 col-lg-3">
+                        <input type="text" class="form-control" id="bits_id" name="bits_id" placeholder="Enter BITS Id">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bits_id" class="col-xs-3 col-sm-3 col-md-2 col-lg-2 control-label">Student's DOB:</label>
+                    <div class=" col-xs-4 col-sm-4 col-md-3 col-lg-3">
+                        <input type="date" class="form-control" id="dob" name="dob" placeholder="Enter BITS Id">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default col-xs-offset-3 col-sm-offset-3 col-md-offset-2 col-lg-offset-2">GO</button>
+                </div>
             </form>
+            </div>
+        </div>
             <?php
             if(isset($data)){
                 if(count($data) === 0){
@@ -79,7 +94,7 @@ and open the template in the editor.
                 ?>
                 <br>
                 <br>
-
+            <div class="container">
                <table class="table table-bordered table-hover table-responsive" id="attendance-table">
                             <thead>
                                 <tr>
@@ -112,6 +127,7 @@ and open the template in the editor.
                                } ?>
                             </tbody>
                         </table> 
+                    </div>
             <?php
                 }
             }

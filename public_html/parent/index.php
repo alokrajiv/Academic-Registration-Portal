@@ -25,10 +25,10 @@ and open the template in the editor.
     <body>
     	<div class="container">
     		<div class="">
-    			<a href="attendance/"><button type="button" class="btn  btn-primary btn-block" style="margin:auto;margin-top:50vh;width:200px;">See Attendance</button></a>
+    			<a href="attendance/"><button type="button" class="btn  btn-lg btn-primary btn-block" style="margin:auto;margin-top:50vh;width:400px;">See Attendance</button></a>
     		</div>
     		<div class="">
-    			<a href="#"><button type="button" class="btn  btn-primary btn-block" style="margin:auto;margin-top:10vh;width:200px;">Message Faculty</button></a>
+    			<a href="#"><button type="button" class="btn  btn-lg btn-primary btn-block" style="margin:auto;margin-top:10vh;width:400px;">Message Faculty</button></a>
     		</div>
     	</div>
     </body>
