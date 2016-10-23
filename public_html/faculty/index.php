@@ -5,18 +5,14 @@ $url_path = $_SERVER['REQUEST_URI'];
 $url_path_blocks = explode("/", $_SERVER['REQUEST_URI']);
 ?>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <meta charset="utf-8">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>ERP-Dashboard</title>
+        <title>ARCD Portal</title>
 
         <!-- Custom Css -->
         <link rel="stylesheet" type="text/css" href="../assets/css/dashboard.css">
@@ -64,7 +60,6 @@ and open the template in the editor.
                         <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                     </form>-->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="http://www.pingpong-labs.com" target="_blank">Visit Site</a></li>
                         <li class="dropdown ">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 <?= ucwords(strtolower($_SESSION['user_data']['full_name'])) ?>
@@ -95,7 +90,7 @@ and open the template in the editor.
                                     <li class="active" id="dashboard"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
                                     <li id="upload-attendance"><a  href="#"><span class="glyphicon glyphicon-user"></span>Upload Attendance</a></li>
                                     <li id="see-attendance"><a  href="#"><span class="glyphicon glyphicon-user"></span>See Attendance</a></li>
-                                    <li><a href="viewclients.php"><span class="glyphicon glyphicon-cloud"></span> Existing Customers</a></li>
+                                   <!-- <li><a href="viewclients.php"><span class="glyphicon glyphicon-cloud"></span> Existing Customers</a></li>-->
 
                                     <!-- Dropdown-->
                                     <li class="panel panel-default" id="dropdown">
@@ -146,22 +141,12 @@ and open the template in the editor.
                     </div>
                     <div class="panel-body" id="dashboard-div">
                         <div id="dashboard-data">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Welcome to ARCD Portal. 
+                            Here, you can view your attendance and related information of your subjects.
                         </div>
                     </div>
                 </div>
             </div>
-            <!--<footer class="pull-left footer">
-                <p class="col-md-12">
-                    <hr class="divider">
-                    Copyright &COPY; 2015 <a href="http://www.pingpong-labs.com">Gravitano</a>
-                </p>
-            </footer>-->
         </div>
     </body>
     <script>

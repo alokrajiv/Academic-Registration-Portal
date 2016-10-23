@@ -85,7 +85,7 @@ checkIfLoggedInAs("student");
                                 <ul class="nav navbar-nav">
                                     <li class="active" id="dashboard"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
                                     <li id="see-attendance"><a  href="#"><span class="glyphicon glyphicon-user"></span>See Attendance</a></li>
-                                    <li><a href="viewclients.php"><span class="glyphicon glyphicon-cloud"></span>Your Subjects</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-cloud"></span>Your Subjects</a></li>
 
                                     <!-- Dropdown-->
                                     <li class="panel panel-default" id="dropdown">
