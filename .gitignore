@@ -1,3 +1,4 @@
 /configs/dev_env.php
 /configs/.htpasswd
 /vendor/
+/public_html/admin/.htaccess
