@@ -9,6 +9,7 @@ if ($_POST) {
             . "`course_list`.`course_name`, "
             . "`student_course_attendance_list`.`comp_code`, "
             . "`student_course_attendance_list`.`section_code`, "
+            . "`student_course_attendance_list`.`data`, "
             . "`student_course_attendance_list`.`attendance` "
             . "FROM "
             . "`student_course_attendance_list` JOIN "
@@ -107,7 +108,7 @@ and open the template in the editor.
                                                 <td class='text-center'>{$value['section_code']}</td>
                                                 <td class='text-center'>{$value['faculty_name']}</td>
                                                 <td class='text-center'>{$value['attendance']} %</td>
-                                                <td class='text-center'><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#attendanceModal' >Click Here</button> </td>
+                                                <td class='text-center'><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#attendanceModal' data-info='{$value['data']} '>Click Here</button> </td>
                                             </tr>";
                             }
                             ?>
@@ -118,5 +119,38 @@ and open the template in the editor.
             }
             ?>
         </div>
+        <div class="modal" id="attendanceModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">ATTENDANCE DETAILS  </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="myTable">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('#attendanceModal').on('show.bs.modal', function (e) {
+                var bookId = $(e.relatedTarget).data('info');
+                var data = (JSON.parse($(e.relatedTarget).data('info')));
+                data = data[0];
+                $('#myTable').html('');
+                for (var i = 5; i < 10; i++) {
+                    $('#myTable').append('<div><b>Month ' + (i - 4) + ' :</b> ' + data[i] + '   </div>');
+                    console.log(data[i]);
+                }
+                $('#myTable').append('<div><b>Total attended    :</b> ' + data[10] + '</div>');
+                $('#myTable').append('<div><b>Total attended in %  :</b> ' + data[11] + '</div>');
+                $(e.currentTarget).find('input[name="bookId"]').val(bookId);
+            });
+        </script>
+
     </body>
 </html>
