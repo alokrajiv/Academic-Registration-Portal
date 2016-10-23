@@ -93,21 +93,21 @@ $url_path_blocks = explode("/", $_SERVER['REQUEST_URI']);
                                    <!-- <li><a href="viewclients.php"><span class="glyphicon glyphicon-cloud"></span> Existing Customers</a></li>-->
 
                                     <!-- Dropdown-->
-                                 <!--   <li class="panel panel-default" id="dropdown">
+                                    <!--<li class="panel panel-default" id="dropdown">
                                         <a data-toggle="collapse" href="#dropdown-lvl1">
                                             <span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
-                                        </a>-->
+                                        </a>
 
-                                        <!-- Dropdown level 1 -->
-                                <!--        <div id="dropdown-lvl1" class="panel-collapse collapse">
+
+                                        <div id="dropdown-lvl1" class="panel-collapse collapse">
                                             <div class="panel-body">
                                                 <ul class="nav navbar-nav">
                                                     <li><a href="#">Link</a></li>
                                                     <li><a href="#">Link</a></li>
-                                                    <li><a href="#">Link</a></li> -->
+                                                    <li><a href="#">Link</a></li>
 
-                                                    <!-- Dropdown level 2 -->
-                                         <!--           <li class="panel panel-default" id="dropdown">
+
+                                                    <li class="panel panel-default" id="dropdown">
                                                         <a data-toggle="collapse" href="#dropdown-lvl2">
                                                             <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
                                                         </a>
@@ -120,13 +120,13 @@ $url_path_blocks = explode("/", $_SERVER['REQUEST_URI']);
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                    </li>-->
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </li>
 
-                                    <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li> -->
 
                                 </ul>
                             </div><!-- /.navbar-collapse -->
@@ -141,7 +141,7 @@ $url_path_blocks = explode("/", $_SERVER['REQUEST_URI']);
                     </div>
                     <div class="panel-body" id="dashboard-div">
                         <div id="dashboard-data">
-                            Welcome to ARCD Portal. 
+                            Welcome to ARCD Portal.
                             Here, you can upload and see attendances of students.
                         </div>
                     </div>
