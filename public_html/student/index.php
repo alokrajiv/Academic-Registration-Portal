@@ -85,43 +85,44 @@ checkIfLoggedInAs("student");
                                 <ul class="nav navbar-nav">
                                     <li class="active" id="dashboard"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
                                     <li id="see-attendance"><a  href="#"><span class="glyphicon glyphicon-user"></span>See Attendance</a></li>
+                                    <li id="see-marks"><a  href="/student/marklist/"><span class="glyphicon glyphicon-user"></span>See Marks</a></li>
                                     <li><a href="#"><span class="glyphicon glyphicon-cloud"></span>Your Subjects</a></li>
 
                                     <!-- Dropdown-->
-                               <!-- <li class="panel panel-default" id="dropdown">
-                                        <a data-toggle="collapse" href="#dropdown-lvl1">
-                                            <span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
-                                        </a>
+                                    <!-- <li class="panel panel-default" id="dropdown">
+                                             <a data-toggle="collapse" href="#dropdown-lvl1">
+                                                 <span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
+                                             </a>
 
-                                        
-                                        <div id="dropdown-lvl1" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <ul class="nav navbar-nav">
-                                                    <li><a href="#">Link</a></li>
-                                                    <li><a href="#">Link</a></li>
-                                                    <li><a href="#">Link</a></li>
 
-                                                    
-                                                    <li class="panel panel-default" id="dropdown">
-                                                        <a data-toggle="collapse" href="#dropdown-lvl2">
-                                                            <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
-                                                        </a>
-                                                        <div id="dropdown-lvl2" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                <ul class="nav navbar-nav">
-                                                                    <li><a href="#">Link</a></li>
-                                                                    <li><a href="#">Link</a></li>
-                                                                    <li><a href="#">Link</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
+                                             <div id="dropdown-lvl1" class="panel-collapse collapse">
+                                                 <div class="panel-body">
+                                                     <ul class="nav navbar-nav">
+                                                         <li><a href="#">Link</a></li>
+                                                         <li><a href="#">Link</a></li>
+                                                         <li><a href="#">Link</a></li>
 
-                                    <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>  -->
+
+                                                         <li class="panel panel-default" id="dropdown">
+                                                             <a data-toggle="collapse" href="#dropdown-lvl2">
+                                                                 <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+                                                             </a>
+                                                             <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                                                 <div class="panel-body">
+                                                                     <ul class="nav navbar-nav">
+                                                                         <li><a href="#">Link</a></li>
+                                                                         <li><a href="#">Link</a></li>
+                                                                         <li><a href="#">Link</a></li>
+                                                                     </ul>
+                                                                 </div>
+                                                             </div>
+                                                         </li>
+                                                     </ul>
+                                                 </div>
+                                             </div>
+                                         </li>
+
+                                         <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>  -->
 
                                 </ul>
                             </div><!-- /.navbar-collapse -->
@@ -136,14 +137,14 @@ checkIfLoggedInAs("student");
                     </div>
                     <div class="panel-body" id="dashboard-div">
                         <div id="dashboard-data">
-                            Welcome to ARCD Portal. 
+                            Welcome to ARCD Portal.
                             Here, you can view your attendance and related information of your subjects.
                         </div>
                     </div>
                     <!--  <button class='btn btn-primary' type='button' data-toggle='modal' data-target='#attendanceModal' >Click Here</button>-->
                 </div>
             </div>
-            
+
         </div>
     </body>
     <script>
