@@ -89,7 +89,9 @@ $url_path_blocks = explode("/", $_SERVER['REQUEST_URI']);
                                 <ul class="nav navbar-nav">
                                     <li class="active" id="dashboard"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
                                     <li id="upload-attendance"><a  href="#"><span class="glyphicon glyphicon-user"></span>Upload Attendance</a></li>
+                                    <li id="upload-marks"><a  href="#"><span class="glyphicon glyphicon-user"></span>upload Marks</a></li>
                                     <li id="see-attendance"><a  href="#"><span class="glyphicon glyphicon-user"></span>See Attendance</a></li>
+                                    <li id="see-marks"><a  href="#"><span class="glyphicon glyphicon-user"></span>See marks</a></li>
                                    <!-- <li><a href="viewclients.php"><span class="glyphicon glyphicon-cloud"></span> Existing Customers</a></li>-->
 
                                     <!-- Dropdown-->
@@ -157,6 +159,12 @@ $url_path_blocks = explode("/", $_SERVER['REQUEST_URI']);
         });
         $('#see-attendance').click(function () {
             window.location = "student_attendance/";
+        });
+        $('#upload-marks').click(function () {
+            window.location = "marklist/";
+        });
+        $('#see-marks').click(function () {
+            window.location = "student_marklist";
         });
         $('#dashboard').click(function () {
             $('#dashboard-div').load('# #dashboard-data');

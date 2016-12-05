@@ -6,12 +6,11 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/../configs/auto_config.php';
 //$_SESSION['filePathForStudentList'] = $target_file;
 //header("Location: sheet_to_db.php");
 
-$sql1 = "CREATE TABLE IF NOT EXISTS `bpdc-arcd-db`.`student_course_attendance_list` "
-        . "( `comp_code` INT NOT NULL , `section_code` VARCHAR(5) NOT NULL ,"
-        . " `bits_id` VARCHAR(20) NOT NULL , `attendance` INT NOT NULL ,"
-        . " `data` TEXT NOT NULL , "
-        . "PRIMARY KEY (`comp_code`,`section_code`,`bits_id`)) "
-        . "ENGINE = InnoDB;";
+$sql1 = "CREATE TABLE IF NOT EXISTS `bpdc-arcd-db`.`student_course_marklist` ("
+        . " `bits_id` VARCHAR(20) NOT NULL ,"
+        . " `comp_code` INT NOT NULL , "
+        . "`data` TEXT NOT NULL , "
+        . "PRIMARY KEY (`bits_id`, `comp_code`)) ENGINE = InnoDB;";
 try {
     $stmt = $dbConn->prepare($sql1);
     $stmt->execute();
@@ -19,10 +18,11 @@ try {
 
 }
 
-$sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_attendance_list` "
-        . "(`comp_code`, `section_code`, `bits_id`, `attendance`, `data`) "
+$sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_marklist` "
+        . "(`comp_code`,`bits_id`, `data`) "
         . "VALUES (?, ?, ?)"
-        . "ON DUPLICATE KEY UPDATE `data` = ?"
+        . "ON DUPLICATE KEY UPDATE "
+        . " `data` = ?"
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,10 +74,9 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_attendance_list` "
             $stmt = $dbConn->prepare($sql2);
             $dbConn->beginTransaction();
             //start----*
-            $i = 1;
-            $data = $_SESSION['attendance_data_to_process'];
+            $i = 0;
+            $data = $_SESSION['marklist_data_to_process'];
             count($data);
-            $meta = $data[0];
             $totRows = count($data);
             while ($i < count($data)) {
                 $row = $data[$i];
@@ -85,9 +84,9 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_attendance_list` "
                     echo "!!SKIPPING $rowIndex";
                     continue;
                 }
-                if ($i >= 1) {
-                    echo "{$row[2]}<br>;";
-                    $stmt->execute(array($row[0], $row[1], $row[2], $row[3], $row[4], $row[0], $row[1], $row[2], $row[3], $row[4]));
+                if ($i >= 0) {
+                    $str = base64_encode(serialize($row[1]));
+                    $stmt->execute(array($_SESSION['marklist_courseid'], $row[0], $str, $str));
                 }
                 if ($i % 5 == 0) {
                     $current_time = microtime(TRUE);
@@ -99,10 +98,10 @@ $sql2 = "INSERT INTO `bpdc-arcd-db`.`student_course_attendance_list` "
                     flush();
                 }
                 $i++;
+                //var_dump(($data[120]));
             }
             //end-----*
             $dbConn->commit();
-            $i--; //to adjust last increment
             echo "New $i records created successfully";
             echo '<script>updateProgress(100, 0)</script>';
             //ob_flush();

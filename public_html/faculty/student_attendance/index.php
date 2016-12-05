@@ -65,6 +65,7 @@ and open the template in the editor.
 
         <div class="container custom-table" >
             <a href="/faculty/">BACK TO DASH</a>
+            <h3>SEE STUDENT ATTENDANCE</h3>
             <form method="post" >
                 STUDENT BITS-ID:&nbsp;&nbsp;&nbsp;<input type="text" name="bits_id" placeholder="Enter Here.. ">
                 <button type="submit">GO</button>
