@@ -44,7 +44,7 @@ and open the template in the editor.
     <body>
 
         <div class="container custom-table" >
-            <a href="/faculty/">BACK TO DASH</a>
+            <a href="/student/">BACK TO DASH</a>
             <h3>SEE  MARKS</h3>
             <?php
             if (isset($data)) {
